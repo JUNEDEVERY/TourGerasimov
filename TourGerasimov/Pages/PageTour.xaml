@@ -1,0 +1,96 @@
+﻿<Page x:Class="TourGerasimov.Pages.PageTour"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TourGerasimov.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" MaxHeight="450" MaxWidth="800" 
+      Background="White"
+      Title="PageTour" >
+    <Page.Resources>
+        <BitmapImage x:Key="defaultPicture" UriSource="/Resources/picture.png"></BitmapImage>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="550"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="0" Name="tbTour" HorizontalAlignment="Center" Width="90">Перечень туров</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                <TextBlock>Введите текст для поиска:</TextBlock>
+                <TextBox x:Name="tbFieldSearch" Width="135"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <GroupBox Header="Выберите тип тура">
+                    <ComboBox Name="cbTypeOfTour" SelectionChanged="cbTypeOfTour_SelectionChanged">
+
+                    </ComboBox>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+                <CheckBox Name="cbActual" Checked="cbActual_Checked" Unchecked="cbActual_Unchecked">Только актуальные</CheckBox>
+
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Width="143">
+            <TextBlock Text="Общая стоимость туров - "></TextBlock>
+            <StackPanel>
+                <GroupBox Header="Фильтрация">
+                    <ComboBox Name="cbFiltres" SelectionChanged="cbFiltres_SelectionChanged">
+                        <ComboBoxItem Content="По умолчанию"/>
+                        <ComboBoxItem Content="По возрастанию"/>
+                        <ComboBoxItem Content="По убыванию"/>
+                    </ComboBox>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <ListView Name="lvTour" Height="500">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                 
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="2" CornerRadius="555, 115, 11, 550" >
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+                                <Image Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultPicture}}" Width="50"/>
+                                <TextBlock Text="{Binding Price}" HorizontalAlignment="Center" ></TextBlock>
+                                <StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding IsActual}" HorizontalAlignment="Left"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock HorizontalAlignment="Right" Text="{Binding TicketCount}"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackPanel>
+        <StackPanel  Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Name="btnGoHotel" Content="СПИСОК ОТЕЛЕЙ" Click="btnGoHotel_Click" >
+        
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Page>
