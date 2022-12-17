@@ -25,7 +25,7 @@ namespace TourGerasimov
         public MainWindow()
         {
             InitializeComponent();
-            DataBase.tbe = new Entities4();
+            DataBase.tbe = new Entities6();
             MainFraim.frame = fMain;
             MainFraim.frame.Navigate(new PageTour());
 

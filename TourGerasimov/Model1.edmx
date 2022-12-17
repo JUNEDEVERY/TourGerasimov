@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище hotels3Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище hotels4Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Code" />
@@ -160,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище hotels3ModelContainer">
+        <EntityContainer Name="Хранилище hotels4ModelContainer">
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HotelComment" EntityType="Self.HotelComment" Schema="dbo" store:Type="Tables" />
@@ -202,7 +202,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="hotels3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="hotels4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Code" />
@@ -312,7 +312,7 @@
           <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
           <End Role="Type" Type="Self.Type" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Entities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" />
           <EntitySet Name="HotelComment" EntityType="Self.HotelComment" />
@@ -345,9 +345,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище hotels3ModelContainer" CdmEntityContainer="Entities5">
+        <EntityContainerMapping StorageEntityContainer="Хранилище hotels4ModelContainer" CdmEntityContainer="Entities6">
           <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="hotels3Model.Country">
+            <EntityTypeMapping TypeName="hotels4Model.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -355,7 +355,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Hotel">
-            <EntityTypeMapping TypeName="hotels3Model.Hotel">
+            <EntityTypeMapping TypeName="hotels4Model.Hotel">
               <MappingFragment StoreEntitySet="Hotel">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -366,7 +366,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HotelComment">
-            <EntityTypeMapping TypeName="hotels3Model.HotelComment">
+            <EntityTypeMapping TypeName="hotels4Model.HotelComment">
               <MappingFragment StoreEntitySet="HotelComment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="HotelId" ColumnName="HotelId" />
@@ -377,7 +377,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HotelImage">
-            <EntityTypeMapping TypeName="hotels3Model.HotelImage">
+            <EntityTypeMapping TypeName="hotels4Model.HotelImage">
               <MappingFragment StoreEntitySet="HotelImage">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="HotelId" ColumnName="HotelId" />
@@ -386,7 +386,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tour">
-            <EntityTypeMapping TypeName="hotels3Model.Tour">
+            <EntityTypeMapping TypeName="hotels4Model.Tour">
               <MappingFragment StoreEntitySet="Tour">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TicketCount" ColumnName="TicketCount" />
@@ -399,7 +399,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type">
-            <EntityTypeMapping TypeName="hotels3Model.Type">
+            <EntityTypeMapping TypeName="hotels4Model.Type">
               <MappingFragment StoreEntitySet="Type">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -407,7 +407,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="HotelOfTour" TypeName="hotels3Model.HotelOfTour" StoreEntitySet="HotelOfTour">
+          <AssociationSetMapping Name="HotelOfTour" TypeName="hotels4Model.HotelOfTour" StoreEntitySet="HotelOfTour">
             <EndProperty Name="Hotel">
               <ScalarProperty Name="Id" ColumnName="HotelId" />
             </EndProperty>
@@ -415,7 +415,7 @@
               <ScalarProperty Name="Id" ColumnName="TourId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="TypeOfTour" TypeName="hotels3Model.TypeOfTour" StoreEntitySet="TypeOfTour">
+          <AssociationSetMapping Name="TypeOfTour" TypeName="hotels4Model.TypeOfTour" StoreEntitySet="TypeOfTour">
             <EndProperty Name="Tour">
               <ScalarProperty Name="Id" ColumnName="TourId" />
             </EndProperty>

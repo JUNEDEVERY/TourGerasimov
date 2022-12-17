@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace TourGerasimov.Classes
 {
     class DataBase
     {
 
-        public static Entities4 tbe = new Entities4();
+        public static Entities6 tbe = new Entities6();
     }
 }

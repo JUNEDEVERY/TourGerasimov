@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TourGerasimov.DataBase
+namespace TourGerasimov
 {
     using System;
     using System.Collections.Generic;
