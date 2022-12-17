@@ -26,7 +26,7 @@ namespace TourGerasimov.Pages
         public PageTour()
         {
             InitializeComponent();
-            lvTour.ItemsSource = DataBase.tbe.Tour.ToList();
+            lvTour.ItemsSource = Tour.getTours();
 
             cbTypeOfTour.Items.Add("Все");
             foreach (Type type in DataBase.tbe.Type.ToList())
@@ -47,72 +47,72 @@ namespace TourGerasimov.Pages
         }
 
 
-
+        public double getSumma(List<Tour> tour)
+        {
+            double sum = 0;
+            foreach (Tour t in tour)
+            {
+                sum = sum + (double)t.Price * (double)t.TicketCount;
+            }
+            return sum;
+        }
         void Filtres()
         {
 
             try
             {
-               
-                //if (cbTypeOfTour != null)
-                string name = cbTypeOfTour.SelectedValue.ToString();
-                int id = cbTypeOfTour.SelectedIndex;
-                Type type = DataBase.tbe.Type.FirstOrDefault(x => x.Name == name);
-                
-                if (id != 0)
+                List<Tour> tours = DataBase.tbe.Tour.ToList();
+                if(cbTypeOfTour != null)
+                if (cbTypeOfTour.SelectedIndex != 0)
                 {
-                    id = DataBase.tbe.Type.FirstOrDefault(t => t.Name == name).Id;
+                    string name = cbTypeOfTour.SelectedValue.ToString();                 
+                    Type type = DataBase.tbe.Type.FirstOrDefault(x => x.Name == name);
+                    tours = tours.Where(x => x.Type.Any(y => y.Id == type.Id)).ToList();
 
                 }
-                //List<Tour> tours = DataBase.tbe.Tour.Include(x=>x.)
-
-
-
-                //}
-                    
-                
-                List<Tour> tourses = DataBase.tbe.Tour.ToList();
-                if(cbFiltres !=null)
+                if (cbFiltres != null)
                     if (cbFiltres.SelectedIndex != 0)
                     {
-                           
-                        ComboBoxItem comboBoxItem = (ComboBoxItem)cbFiltres.SelectedItem;
-                        switch (comboBoxItem.Content)
-                        {
 
-                        case "По уиолчанию":
+                        ComboBoxItem comboBoxItem = (ComboBoxItem)cbFiltres.SelectedItem;
+                        if (comboBoxItem != null)
+                            switch (comboBoxItem.Content)
                             {
 
-                                tourses = tourses;
-                                break;
+                                case "По умолчанию":
+                                    {
+
+                                        tours = tours;
+                                        break;
+                                    }
+
+                                case "По возрастанию":
+                                    {
+
+                                        tours = tours.OrderBy(x => x.Price).ToList();
+                                        break;
+                                    }
+                                case "По убыванию":
+                                    {
+
+                                        tours = tours.OrderByDescending(x => x.Price).ToList();
+                                        break;
+                                    }
+
+
+
                             }
-
-                        case "По возрастанию":
-                                {
-
-                                tourses = tourses.OrderBy(x => x.Price).ToList();
-                                    break;
-                                }
-                            case "По убыванию":
-                                {
-
-                                tourses = tourses.OrderByDescending(x => x.Price).ToList();
-                                    break;
-                                }
-                   
-
-
-                        }
                     }
                 if (cbActual.IsChecked == true)
                 {
-                    tourses = tourses.Where(x => x.IsActual == true).ToList();
+                    tours = tours.Where(x=>x.IsActual == true).ToList();
                 }
+                lvTour.ItemsSource = tours;
 
 
-                lvTour.ItemsSource = tourses;
-
-
+         
+                Summa.Text = getSumma(tours).ToString("F3") + " РУБ";
+            
             }
             catch
             {
@@ -123,7 +123,7 @@ namespace TourGerasimov.Pages
 
 
         }
-
+      
         private void cbFiltres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filtres();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TourGerasimov.Classes
 {
-     class DataBase
+    class DataBase
     {
 
-        public static Entities tbe = new Entities();
+        public static Entities4 tbe = new Entities4();
     }
 }

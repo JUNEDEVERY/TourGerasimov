@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TourGerasimov
+namespace TourGerasimov.DataBase
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities5 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities5()
+            : base("name=Entities5")
         {
         }
     

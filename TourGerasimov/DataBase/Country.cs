@@ -7,33 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TourGerasimov
+namespace TourGerasimov.DataBase
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Hotel
+    public partial class Country
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Hotel()
+        public Country()
         {
-            this.HotelComment = new HashSet<HotelComment>();
-            this.HotelImage = new HashSet<HotelImage>();
-            this.Tour = new HashSet<Tour>();
+            this.Hotel = new HashSet<Hotel>();
         }
     
-        public int Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-        public int CountOfStars { get; set; }
-        public string CountryCode { get; set; }
-        public string Description { get; set; }
     
-        public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HotelComment> HotelComment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HotelImage> HotelImage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tour> Tour { get; set; }
+        public virtual ICollection<Hotel> Hotel { get; set; }
     }
 }

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TourGerasimov"
         mc:Ignorable="d"
-           ResizeMode="NoResize"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        ResizeMode="NoResize"
+        Title="MainWindow"  Height="500" MinHeight="500" Width="950" MaxWidth="950" WindowStartupLocation="CenterScreen">
     <Grid>
 
-        <StackPanel>
-            <Frame Name="fMain" Navigated="fMain_Navigated"  Source="Pages"/>
-        </StackPanel>
+     
+        <Frame Name="fMain"  VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Source="Pages"/>
+        
     </Grid>
 </Window>

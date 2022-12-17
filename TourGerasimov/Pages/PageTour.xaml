@@ -14,24 +14,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="550"/>
-            <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Name="tbTour" HorizontalAlignment="Center" Width="90">Перечень туров</TextBlock>
-        <StackPanel Grid.Row="1" Grid.Column="1" >
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-                <TextBlock>Введите текст для поиска:</TextBlock>
+        <TextBlock FontFamily="Comic Sans MS" Grid.Column="0" Margin="0 15 0 0" Grid.Row="0" Name="tbTour" HorizontalAlignment="Center" Width="90">Перечень туров</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="0" >
+            <StackPanel Margin="0 0 50 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock  FontFamily="Comic Sans MS">Введите текст для поиска:</TextBlock>
                 <TextBox x:Name="tbFieldSearch" Width="135"></TextBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <GroupBox Header="Выберите тип тура">
+                <GroupBox Margin="0 0 150 0" FontFamily="Comic Sans MS" Header="Выберите тип тура">
                     <ComboBox Name="cbTypeOfTour" SelectionChanged="cbTypeOfTour_SelectionChanged">
 
                     </ComboBox>
@@ -39,58 +33,75 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
 
-                <CheckBox Name="cbActual" Checked="cbActual_Checked" Unchecked="cbActual_Unchecked">Только актуальные</CheckBox>
+                <CheckBox Margin="0 0 50 0"  FontFamily="Comic Sans MS" Name="cbActual" Checked="cbActual_Checked" Unchecked="cbActual_Unchecked">Только актуальные</CheckBox>
 
 
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Width="143">
-            <TextBlock Text="Общая стоимость туров - "></TextBlock>
-            <StackPanel>
-                <GroupBox Header="Фильтрация">
-                    <ComboBox Name="cbFiltres" SelectionChanged="cbFiltres_SelectionChanged">
-                        <ComboBoxItem Content="По умолчанию"/>
-                        <ComboBoxItem Content="По возрастанию"/>
-                        <ComboBoxItem Content="По убыванию"/>
-                    </ComboBox>
-                </GroupBox>
-            </StackPanel>
+        <StackPanel  Margin="500 30 -60 0" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  >
+            <TextBlock   FontFamily="Comic Sans MS" Text="Общая стоимость туров"></TextBlock>
+         
+            <TextBlock  HorizontalAlignment="Center"  FontFamily="Comic Sans MS"  Name="Summa" Text="{Binding Summ}" Foreground="DarkGreen" FontWeight="Bold" />
+
+
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <ListView Name="lvTour" Height="500">
+        <StackPanel HorizontalAlignment="Center" Margin="130 20 0 0"  Grid.Row="1" Grid.Column="2">
+            <GroupBox  FontFamily="Comic Sans MS" Header="Фильтрация">
+                <ComboBox Name="cbFiltres" SelectionChanged="cbFiltres_SelectionChanged">
+                    <ComboBoxItem Content="По умолчанию"/>
+                    <ComboBoxItem Content="По возрастанию"/>
+                    <ComboBoxItem Content="По убыванию"/>
+                </ComboBox>
+            </GroupBox>
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView Name="lvTour" Width="750" Height="274" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  FontFamily="Comic Sans MS" Grid.ColumnSpan="1" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
-                 
+
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="2" CornerRadius="555, 115, 11, 550" >
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
-                                <Image Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultPicture}}" Width="50"/>
-                                <TextBlock Text="{Binding Price}" HorizontalAlignment="Center" ></TextBlock>
-                                <StackPanel>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding IsActual}" HorizontalAlignment="Left"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock HorizontalAlignment="Right" Text="{Binding TicketCount}"></TextBlock>
-                                    </StackPanel>
+                    
+
+
+                            <Border Margin="5 15 0 0" BorderThickness="2" CornerRadius="0" BorderBrush="DarkGreen">
+                            <StackPanel Width="200" Height="200">
+
+
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock  HorizontalAlignment="Center"   TextWrapping="Wrap"  Text="{Binding Name}" ></TextBlock>
+
+                                <Image Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultPicture}}" Width="150" Height="120"/>
+                                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Price, StringFormat={}{0:F3} РУБ}" ></TextBlock>
+
+                                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Margin="0 15 0 0">
+
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Actuality}" Foreground="{Binding Color}" HorizontalAlignment="Left"></TextBlock>
+
+                                        <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" HorizontalAlignment="Right" Text="{Binding TicketCount, StringFormat={}Билетов: {0}}"></TextBlock>
                                 </StackPanel>
+
+
+                            </StackPanel>
                             </StackPanel>
                         </Border>
+                      
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
         </StackPanel>
         <StackPanel  Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Name="btnGoHotel" Content="СПИСОК ОТЕЛЕЙ" Click="btnGoHotel_Click" >
-        
+            <Button FontFamily="Comic Sans MS" Name="btnGoHotel" Content="СПИСОК ОТЕЛЕЙ" Click="btnGoHotel_Click" >
+
             </Button>
         </StackPanel>
-        
+
     </Grid>
 </Page>

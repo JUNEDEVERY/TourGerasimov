@@ -7,31 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TourGerasimov
+namespace TourGerasimov.DataBase
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Tour
+    public partial class Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tour()
+        public Type()
         {
-            this.Hotel = new HashSet<Hotel>();
-            this.Type = new HashSet<Type>();
+            this.Tour = new HashSet<Tour>();
         }
     
         public int Id { get; set; }
-        public int TicketCount { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ImagePreview { get; set; }
-        public decimal Price { get; set; }
-        public bool IsActual { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hotel> Hotel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Type> Type { get; set; }
+        public virtual ICollection<Tour> Tour { get; set; }
     }
 }

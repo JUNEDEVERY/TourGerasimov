@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
-namespace TourGerasimov.Classes
+namespace TourGerasimov
 {
-     class Frame
+    class MainFraim
     {
 
         public static Frame frame;

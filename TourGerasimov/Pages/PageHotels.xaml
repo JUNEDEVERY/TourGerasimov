@@ -5,10 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TourGerasimov.Pages"
       mc:Ignorable="d" 
+      Background="White"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageHotels">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition  Height="50"></RowDefinition>
+            <RowDefinition Height="300" ></RowDefinition>
+            <RowDefinition Height="3"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список отелей" FontFamily="Comic Sans MS" Name="tbSpisok" HorizontalAlignment="Center" Grid.Row="0"></TextBlock>
+
+        <DataGrid Grid.Row="2">
+            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" ></DataGridTextColumn>
+            <DataGridTextColumn Header="Кол-во туров" Binding="{Binding CountOfStars}" ></DataGridTextColumn>
+            <DataGridTextColumn Header="Кол-во звезд" Binding="{Binding TourCount}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}"></DataGridTextColumn>
+        </DataGrid>
     </Grid>
 </Page>

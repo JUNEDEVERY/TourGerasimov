@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using TourGerasimov.Classes;
+using TourGerasimov.Pages;
 
 namespace TourGerasimov
 {
@@ -25,11 +25,9 @@ namespace TourGerasimov
         public MainWindow()
         {
             InitializeComponent();
-         
-        }
-
-        private void fMain_Navigated(object sender, NavigationEventArgs e)
-        {
+            DataBase.tbe = new Entities4();
+            MainFraim.frame = fMain;
+            MainFraim.frame.Navigate(new PageTour());
 
         }
     }
