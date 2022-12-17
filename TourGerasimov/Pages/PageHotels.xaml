@@ -14,16 +14,64 @@
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition  Height="50"></RowDefinition>
             <RowDefinition Height="300" ></RowDefinition>
-            <RowDefinition Height="3"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock  FontFamily="Comic Sans MS" Text="Количество записей "></TextBlock>
+            <TextBlock  FontFamily="Comic Sans MS" Name="tbCountRecords" FontWeight="Bold" ></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock  FontFamily="Comic Sans MS"  Text="Количество страниц "></TextBlock>
+            <TextBlock  FontFamily="Comic Sans MS" Name="tbCountPages" FontWeight="Bold" ></TextBlock>
+        </StackPanel>
 
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <TextBlock  FontFamily="Comic Sans MS" Text="Текущая страница "></TextBlock>
+            <TextBlock  FontFamily="Comic Sans MS" Name="tbCurrentPage" FontWeight="Bold"></TextBlock>
+        </StackPanel>
         <TextBlock Text="Список отелей" FontFamily="Comic Sans MS" Name="tbSpisok" HorizontalAlignment="Center" Grid.Row="0"></TextBlock>
 
-        <DataGrid Grid.Row="2">
-            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" ></DataGridTextColumn>
-            <DataGridTextColumn Header="Кол-во туров" Binding="{Binding CountOfStars}" ></DataGridTextColumn>
-            <DataGridTextColumn Header="Кол-во звезд" Binding="{Binding TourCount}"></DataGridTextColumn>
-            <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}"></DataGridTextColumn>
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" Name="dg">
+            <DataGrid.Columns>
+
+
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="0.8*" ></DataGridTextColumn>
+                <DataGridTextColumn FontFamily="Comic Sans MS"  Header="Кол-во звезд" Binding="{Binding CountOfStars}" Width="0.26*"  ></DataGridTextColumn>
+                <DataGridTextColumn  FontFamily="Comic Sans MS" x:Name="dgtxKolvoTurov" Header="Кол-во туров" Binding="{Binding CountTour}" Width="0.3*"></DataGridTextColumn>
+                <DataGridTextColumn  FontFamily="Comic Sans MS" Header="Страна" Binding="{Binding Country.Name}" Width="0.3*" ></DataGridTextColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Изменить" Uid="{Binding Id}" Name="btnChange" Click="btnChange_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Row="3"  Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button  FontFamily="Comic Sans MS"  Content="Назад" x:Name="btnGoBack" Click="btnGoBack_Click" Margin="15 0 0 0"   />
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Row="3">
+            <TextBlock  FontFamily="Comic Sans MS" Text="Кол-во записей на 1 странице: "/>
+            <TextBox  FontFamily="Comic Sans MS" Name="tbCountPage" TextChanged="tbCountPages_TextChanged" HorizontalAlignment="Center">10</TextBox>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Name="txtNextFirst" Uid="next"  Text=" в начало "  MouseDown="txtNextFirst_MouseDown"/>
+            <TextBlock Name="txtPrev" Uid="prev" Text=" &lt; "  MouseDown="txt1_MouseDown"/>
+            <TextBlock Name="txt1" Uid="1" Text="{Binding  Path = NPage[0], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}"  MouseDown="txt1_MouseDown" Cursor="Hand"/>
+            <TextBlock Name="txt2" Uid="2" Text="{Binding  Path = NPage[1], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}"  MouseDown="txt1_MouseDown"/>
+            <TextBlock Name="txt3" Uid="3" Text="{Binding  Path = NPage[2], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[2]}" FontWeight="{Binding Bold[2]}"  MouseDown="txt1_MouseDown"/>
+            <TextBlock Name="txt4" Uid="4" Text="{Binding  Path = NPage[3], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}"  MouseDown="txt1_MouseDown" Cursor="Hand"/>
+            <TextBlock Name="txt5" Uid="5" Text="{Binding  Path = NPage[4], StringFormat={}{0}}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}"  MouseDown="txt1_MouseDown"/>
+            <TextBlock Name="txtNext" Uid="next" Text=" &gt; "  MouseDown="txt1_MouseDown" Cursor="Hand"/>
+            <TextBlock Name="txtNextLast" Uid="next" Text=" в конец" MouseDown="txtNextLast_MouseDown" Cursor="Hand"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button  FontFamily="Comic Sans MS" Content="Удалить  запись" Name="btnDeleteRow" Click="btnDeleteRow_Click"/>
+            <Button  FontFamily="Comic Sans MS" Content="Добавить отель" Name="btnGoAddHotel" Click="btnGoAddHotel_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

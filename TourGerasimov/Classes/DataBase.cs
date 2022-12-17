@@ -10,6 +10,6 @@ namespace TourGerasimov.Classes
     class DataBase
     {
 
-        public static Entities6 tbe = new Entities6();
+        public static Entities7 tbe = new Entities7();
     }
 }

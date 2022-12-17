@@ -13,10 +13,10 @@ namespace TourGerasimov
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities6 : DbContext
+    public partial class Entities7 : DbContext
     {
-        public Entities6()
-            : base("name=Entities6")
+        public Entities7()
+            : base("name=Entities7")
         {
         }
     
@@ -29,6 +29,7 @@ namespace TourGerasimov
         public virtual DbSet<Hotel> Hotel { get; set; }
         public virtual DbSet<HotelComment> HotelComment { get; set; }
         public virtual DbSet<HotelImage> HotelImage { get; set; }
+        public virtual DbSet<HotelOfTour> HotelOfTour { get; set; }
         public virtual DbSet<Tour> Tour { get; set; }
         public virtual DbSet<Type> Type { get; set; }
     }

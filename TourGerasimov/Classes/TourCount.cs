@@ -1,22 +1,24 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TourGerasimov.Classes;
+namespace TourGerasimov
+{
+    public partial class Hotel
+    {
 
-//namespace TourGerasimov.Classes
-//{
-//    public partial class Hotel
-//    //{
-//    //    public int TourCount
-//    //    {
-//    //        //get
-//    //        //{
-//    //        //    List<HotelOfTour> hotelOfTours = DataBase.tbe.HotelOfTour.Where(x=>x.HotelId == i)
-//    //        //}
-//    //    }
+        public int CountTour
+        {
+            get
+            {
+                List<HotelOfTour> list = DataBase.tbe.HotelOfTour.Where(x => x.HotelId == Id ).ToList();
+                return list.Count;
+            }
+        }
 
 
 
-//    }
-//}
+    }
+}

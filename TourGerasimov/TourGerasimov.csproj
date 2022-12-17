@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\CountPages.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -74,6 +75,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="HotelImage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelOfTour.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs">
@@ -122,10 +126,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="DataBase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageAddHotel.xaml.cs">
       <DependentUpon>PageAddHotel.xaml</DependentUpon>
@@ -153,12 +157,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="DataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="DataBase.edmx.diagram">
+      <DependentUpon>DataBase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -200,12 +204,12 @@
   <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>

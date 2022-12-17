@@ -17,7 +17,7 @@ namespace TourGerasimov
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tour()
         {
-            this.Hotel = new HashSet<Hotel>();
+            this.HotelOfTour = new HashSet<HotelOfTour>();
             this.Type = new HashSet<Type>();
         }
     
@@ -30,7 +30,7 @@ namespace TourGerasimov
         public bool IsActual { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hotel> Hotel { get; set; }
+        public virtual ICollection<HotelOfTour> HotelOfTour { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Type { get; set; }
     }
