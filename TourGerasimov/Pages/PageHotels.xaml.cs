@@ -30,37 +30,40 @@ namespace TourGerasimov.Pages
         public PageHotels()
         {
             InitializeComponent();
-           
             dg.ItemsSource = DataBase.tbe.Hotel.ToList();
             tbCountRecords.Text = Convert.ToString(DataBase.tbe.Hotel.ToList().Count);
             hotels = DataBase.tbe.Hotel.ToList();
-            pc.CountPage = DataBase.tbe.Hotel.ToList().Count();
+            pc.CountPage = DataBase.tbe.Hotel.ToList().Count;
             tbCountPages.Text = pc.CountPages.ToString();
             tbCurrentPage.Text = pc.CurrentPage.ToString();
             DataContext = pc;
+            tbCountPage.Text = "10";
+      
         }
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             int i = Convert.ToInt32(button.Uid);
             Hotel hotel = DataBase.tbe.Hotel.FirstOrDefault(x => x.Id == i);
-            //NavigationService.Navigate(new PageAddHotel(hotel));
+            NavigationService.Navigate(new PageAddHotel(hotel));
         }
         public PageHotels(string k)
         {
             InitializeComponent();
-            tbCountPage.Text = k;
             dg.ItemsSource = DataBase.tbe.Hotel.ToList();
             tbCountRecords.Text = Convert.ToString(DataBase.tbe.Hotel.ToList().Count);
             hotels = DataBase.tbe.Hotel.ToList();
-            pc.CountPage = DataBase.tbe.Hotel.ToList().Count();
+            pc.CountPage = DataBase.tbe.Hotel.ToList().Count;
             tbCountPages.Text = pc.CountPages.ToString();
             tbCurrentPage.Text = pc.CurrentPage.ToString();
             DataContext = pc;
+            tbCountPage.Text = k;
+     
+            
         }
         private void btnGoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PageTour());
         }
 
         private void tbCountPages_TextChanged(object sender, TextChangedEventArgs e)

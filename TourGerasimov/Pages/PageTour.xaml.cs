@@ -107,6 +107,10 @@ namespace TourGerasimov.Pages
                 {
                     tours = tours.Where(x=>x.IsActual == true).ToList();
                 }
+                if (tbFieldSearch.Text != "")
+                {
+                    tours = tours.Where(x => x.Name.ToLower().Contains(tbFieldSearch.Text.ToLower())).ToList();
+                }
                 lvTour.ItemsSource = tours;
 
 
@@ -136,6 +140,11 @@ namespace TourGerasimov.Pages
         }
 
         private void cbActual_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Filtres();
+        }
+
+        private void tbFieldSearch_SelectionChanged(object sender, RoutedEventArgs e)
         {
             Filtres();
         }

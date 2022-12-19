@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       Background="White"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageHotels">
+      Title="Список отелей" Style="{StaticResource ResourceKey=pageStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -31,34 +31,34 @@
         </StackPanel>
         <TextBlock Text="Список отелей" FontFamily="Comic Sans MS" Name="tbSpisok" HorizontalAlignment="Center" Grid.Row="0"></TextBlock>
 
-        <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" Name="dg">
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" Name="dg" HorizontalAlignment="Center" >
             <DataGrid.Columns>
 
 
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="0.8*" ></DataGridTextColumn>
-                <DataGridTextColumn FontFamily="Comic Sans MS"  Header="Кол-во звезд" Binding="{Binding CountOfStars}" Width="0.26*"  ></DataGridTextColumn>
-                <DataGridTextColumn  FontFamily="Comic Sans MS" x:Name="dgtxKolvoTurov" Header="Кол-во туров" Binding="{Binding CountTour}" Width="0.3*"></DataGridTextColumn>
-                <DataGridTextColumn  FontFamily="Comic Sans MS" Header="Страна" Binding="{Binding Country.Name}" Width="0.3*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="0.8*"  ></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во звезд" Binding="{Binding CountOfStars}" Width="0.7*"  ></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во туров" x:Name="dgtxKolvoTurov"  Binding="{Binding CountTour}" Width="0.7*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}" Width="0.7*" ></DataGridTextColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Изменить" Uid="{Binding Id}" Name="btnChange" Click="btnChange_Click"/>
+                            <Button Template="{StaticResource ResourceKey=btnTemp}" Content="Изменить" Uid="{Binding Id}" Name="btnChange" Click="btnChange_Click" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="3"  Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button  FontFamily="Comic Sans MS"  Content="Назад" x:Name="btnGoBack" Click="btnGoBack_Click" Margin="15 0 0 0"   />
+            <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS"  Content="Назад" x:Name="btnGoBack" Click="btnGoBack_Click" Margin="15 0 0 0"   />
 
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Grid.Row="3">
             <TextBlock  FontFamily="Comic Sans MS" Text="Кол-во записей на 1 странице: "/>
-            <TextBox  FontFamily="Comic Sans MS" Name="tbCountPage" TextChanged="tbCountPages_TextChanged" HorizontalAlignment="Center">10</TextBox>
+            <TextBox  FontFamily="Comic Sans MS" Name="tbCountPage" TextChanged="tbCountPages_TextChanged" HorizontalAlignment="Center"></TextBox>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 35 0 0">
             <TextBlock Name="txtNextFirst" Uid="next"  Text=" в начало "  MouseDown="txtNextFirst_MouseDown"/>
             <TextBlock Name="txtPrev" Uid="prev" Text=" &lt; "  MouseDown="txt1_MouseDown"/>
             <TextBlock Name="txt1" Uid="1" Text="{Binding  Path = NPage[0], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}"  MouseDown="txt1_MouseDown" Cursor="Hand"/>
@@ -70,8 +70,8 @@
             <TextBlock Name="txtNextLast" Uid="next" Text=" в конец" MouseDown="txtNextLast_MouseDown" Cursor="Hand"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button  FontFamily="Comic Sans MS" Content="Удалить  запись" Name="btnDeleteRow" Click="btnDeleteRow_Click"/>
-            <Button  FontFamily="Comic Sans MS" Content="Добавить отель" Name="btnGoAddHotel" Click="btnGoAddHotel_Click"/>
+            <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS" Content="Удалить  запись" Name="btnDeleteRow" Click="btnDeleteRow_Click"/>
+            <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS" Content="Добавить отель" Name="btnGoAddHotel" Click="btnGoAddHotel_Click" Margin="15 0 0 0"/>
         </StackPanel>
     </Grid>
 </Page>

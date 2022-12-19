@@ -5,10 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TourGerasimov.Pages"
       mc:Ignorable="d" 
+      Background="white"
       d:DesignHeight="450" d:DesignWidth="800" MaxHeight="450" MaxWidth="800" 
-      Title="PageAddHotel">
+      Title="PageAddHotel" Style="{StaticResource ResourceKey=pageStyle}">
 
     <Grid>
-        
+
+        <Border BorderBrush="DarkGreen" Width="500" Height="360" BorderThickness="2" CornerRadius="150" Margin="0 50 0 0" >
+
+            <StackPanel>
+                <TextBlock Text="Добавление нового отеля" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Margin="0 15 0 0" Name="HeaderTB"/>
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 5" >
+                        <TextBlock FontFamily="Comic Sans MS" Text="Наименование " HorizontalAlignment="Center"/>
+                        <TextBox FontFamily="Comic Sans MS" x:Name="tbName" MaxLength="100" Width="122"></TextBox>
+                    </StackPanel>
+                    <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 5">
+                        <TextBlock FontFamily="Comic Sans MS"  Text="Количество звезд " Width="130" Margin="0 0 10 0"/>
+                        <TextBox FontFamily="Comic Sans MS" x:Name="tbCountStar" MaxLength="100" Width="93"></TextBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
+                        <TextBlock FontFamily="Comic Sans MS" Text="Страна " Width="56" />
+                        <ComboBox FontFamily="Comic Sans MS" Name="cbCountry" Width="177">
+                         
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock FontFamily="Comic Sans MS" Text="Описание" HorizontalAlignment="Center" Margin="0 15 0 5"/>
+                <StackPanel Margin="0 5 0 5">
+                    <TextBox TextWrapping="Wrap" Name="tbDescr"  FontFamily="Comic Sans MS" Height="79" Width="196" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True">
+
+                    </TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS" Content="Добавить новый отель" Name="btnAddNewHotel" Click="btnAddNewHotel_Click"/>
+                    <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS" Content="Назад" Name="btnBack" Click="btnBack_Click" Margin="0 5 0 0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

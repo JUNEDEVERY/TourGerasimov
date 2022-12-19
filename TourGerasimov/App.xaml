@@ -4,6 +4,28 @@
              xmlns:local="clr-namespace:TourGerasimov"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="pageStyle" TargetType="Page">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style.Setters>
+        </Style>
+        <ControlTemplate TargetType="Button" x:Key="btnTemp">
+            <Border x:Name="btnBorder" CornerRadius="5" BorderThickness="1.5" BorderBrush="Black" Background="#4ba060" Padding="5" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" MinWidth="104" Cursor="Hand">
+                <ContentControl x:Name="btnControl" Content="{TemplateBinding Content}" FontFamily="Zekton Rg" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <ControlTemplate.Triggers>
+
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="btnBorder" Property="Background" Value="#8cbe99"/>
+                </Trigger>
+
+
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

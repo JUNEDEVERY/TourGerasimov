@@ -7,28 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" MaxHeight="450" MaxWidth="800" 
       Background="White"
-      Title="PageTour" >
+      Title="Список туров" Style="{StaticResource ResourceKey=pageStyle}">
     <Page.Resources>
-        <BitmapImage x:Key="defaultPicture" UriSource="/Resources/picture.png"></BitmapImage>
+        <BitmapImage x:Key="defaultPicture" UriSource="/Resources/picture.png" ></BitmapImage>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontFamily="Comic Sans MS" Grid.Column="0" Margin="0 15 0 0" Grid.Row="0" Name="tbTour" HorizontalAlignment="Center" Width="90">Перечень туров</TextBlock>
+        <TextBlock FontFamily="Comic Sans MS" Grid.Column="0" Margin="0,15,0,0" Grid.Row="0" Name="tbTour" HorizontalAlignment="Center" Width="118">Перечень туров</TextBlock>
         <StackPanel Grid.Row="1" Grid.Column="0" >
-            <StackPanel Margin="0 0 50 0" HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBlock  FontFamily="Comic Sans MS">Введите текст для поиска:</TextBlock>
-                <TextBox x:Name="tbFieldSearch" Width="135"></TextBox>
+            <StackPanel Margin="0 5 50 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock  FontFamily="Comic Sans MS" Text="Введите текст для поиска: "></TextBlock>
+                <TextBox x:Name="tbFieldSearch" Width="135" SelectionChanged="tbFieldSearch_SelectionChanged"></TextBox>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <GroupBox Margin="0 0 150 0" FontFamily="Comic Sans MS" Header="Выберите тип тура">
-                    <ComboBox Name="cbTypeOfTour" SelectionChanged="cbTypeOfTour_SelectionChanged">
-
-                    </ComboBox>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="200" Margin="0 0 185 0">
+                <GroupBox Margin="0 0 220 0" FontFamily="Comic Sans MS" Header="Выберите тип тура">
+                    <ComboBox Name="cbTypeOfTour" SelectionChanged="cbTypeOfTour_SelectionChanged" MinWidth="150" MaxWidth="150"/>
                 </GroupBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
@@ -40,14 +38,14 @@
         </StackPanel>
         <StackPanel  Margin="500 30 -60 0" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  >
             <TextBlock   FontFamily="Comic Sans MS" Text="Общая стоимость туров"></TextBlock>
-         
-            <TextBlock  HorizontalAlignment="Center"  FontFamily="Comic Sans MS"  Name="Summa" Text="{Binding Summ}" Foreground="DarkGreen" FontWeight="Bold" />
+
+            <TextBlock  HorizontalAlignment="Center"  FontFamily="Comic Sans MS"  Name="Summa" Text="{Binding Summ}"  FontWeight="Bold" />
 
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Margin="130 20 0 0"  Grid.Row="1" Grid.Column="2">
+        <StackPanel HorizontalAlignment="Center" Margin="180 30 0 0"  Grid.Row="1" Grid.Column="2">
             <GroupBox  FontFamily="Comic Sans MS" Header="Фильтрация">
-                <ComboBox Name="cbFiltres" SelectionChanged="cbFiltres_SelectionChanged">
+                <ComboBox Name="cbFiltres" SelectionChanged="cbFiltres_SelectionChanged" MaxWidth="100" MinWidth="100">
                     <ComboBoxItem Content="По умолчанию"/>
                     <ComboBoxItem Content="По возрастанию"/>
                     <ComboBoxItem Content="По убыванию"/>
@@ -57,8 +55,8 @@
 
 
 
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <ListView Name="lvTour" Width="750" Height="274" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  FontFamily="Comic Sans MS" Grid.ColumnSpan="1" >
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Margin="0,19,0,0">
+            <ListView Name="lvTour" Width="800" Height="239" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  FontFamily="Comic Sans MS" Grid.ColumnSpan="1" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"/>
@@ -67,38 +65,38 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                    
 
 
-                            <Border Margin="5 15 0 0" BorderThickness="2" CornerRadius="0" BorderBrush="DarkGreen">
+
+                        <Border Margin="5 15 0 0" BorderThickness="2" CornerRadius="0" BorderBrush="DarkGreen">
                             <StackPanel Width="200" Height="200">
 
 
                                 <StackPanel HorizontalAlignment="Center">
                                     <TextBlock  HorizontalAlignment="Center"   TextWrapping="Wrap"  Text="{Binding Name}" ></TextBlock>
 
-                                <Image Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultPicture}}" Width="150" Height="120"/>
+                                    <Image Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultPicture}}" Width="150" Height="100"/>
                                     <TextBlock FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Price, StringFormat={}{0:F3} РУБ}" ></TextBlock>
 
                                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Margin="0 15 0 0">
 
-                                        <TextBlock TextWrapping="Wrap" Text="{Binding Actuality}" Foreground="{Binding Color}" HorizontalAlignment="Left"></TextBlock>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Actuality}" Foreground="{Binding Color}" HorizontalAlignment="Left" Margin="0 0 15 0"></TextBlock>
 
                                         <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" HorizontalAlignment="Right" Text="{Binding TicketCount, StringFormat={}Билетов: {0}}"></TextBlock>
+                                    </StackPanel>
+
+
                                 </StackPanel>
-
-
-                            </StackPanel>
                             </StackPanel>
                         </Border>
-                      
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
         </StackPanel>
         <StackPanel  Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button FontFamily="Comic Sans MS" Name="btnGoHotel" Content="СПИСОК ОТЕЛЕЙ" Click="btnGoHotel_Click" >
+            <Button Template="{StaticResource ResourceKey=btnTemp}" FontFamily="Comic Sans MS" Name="btnGoHotel" Content="СПИСОК ОТЕЛЕЙ" Click="btnGoHotel_Click" >
 
             </Button>
         </StackPanel>
