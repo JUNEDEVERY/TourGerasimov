@@ -22,7 +22,14 @@
         <StackPanel Grid.Row="1" Grid.Column="0" >
             <StackPanel Margin="0 5 50 0" HorizontalAlignment="Center" Orientation="Horizontal">
                 <TextBlock  FontFamily="Comic Sans MS" Text="Введите текст для поиска: "></TextBlock>
-                <TextBox x:Name="tbFieldSearch" Width="135" SelectionChanged="tbFieldSearch_SelectionChanged"></TextBox>
+                <TextBox x:Name="tbFieldSearch" Width="135" SelectionChanged="tbFieldSearch_SelectionChanged">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            Поиск по наименованию и описанию
+                        </ToolTip>
+                    </TextBox.ToolTip>
+
+                </TextBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="200" Margin="0 0 185 0">
                 <GroupBox Margin="0 0 220 0" FontFamily="Comic Sans MS" Header="Выберите тип тура">

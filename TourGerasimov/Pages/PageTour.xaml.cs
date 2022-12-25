@@ -62,14 +62,14 @@ namespace TourGerasimov.Pages
             try
             {
                 List<Tour> tours = DataBase.tbe.Tour.ToList();
-                if(cbTypeOfTour != null)
-                if (cbTypeOfTour.SelectedIndex != 0)
-                {
-                    string name = cbTypeOfTour.SelectedValue.ToString();                 
-                    Type type = DataBase.tbe.Type.FirstOrDefault(x => x.Name == name);
-                    tours = tours.Where(x => x.Type.Any(y => y.Id == type.Id)).ToList();
+                if (cbTypeOfTour != null)
+                    if (cbTypeOfTour.SelectedIndex != 0)
+                    {
+                        string name = cbTypeOfTour.SelectedValue.ToString();
+                        Type type = DataBase.tbe.Type.FirstOrDefault(x => x.Name == name);
+                        tours = tours.Where(x => x.Type.Any(y => y.Id == type.Id)).ToList();
 
-                }
+                    }
                 if (cbFiltres != null)
                     if (cbFiltres.SelectedIndex != 0)
                     {
@@ -105,18 +105,20 @@ namespace TourGerasimov.Pages
                     }
                 if (cbActual.IsChecked == true)
                 {
-                    tours = tours.Where(x=>x.IsActual == true).ToList();
+                    tours = tours.Where(x => x.IsActual == true).ToList();
                 }
                 if (tbFieldSearch.Text != "")
                 {
-                    tours = tours.Where(x => x.Name.ToLower().Contains(tbFieldSearch.Text.ToLower())).ToList();
+                    tours = tours.Where(x => x.Name.ToLower().Contains(tbFieldSearch.Text.ToLower()) || (x.Description.ToLower().Contains(tbFieldSearch.Text.ToLower()))).ToList();
+
                 }
+
                 lvTour.ItemsSource = tours;
 
 
-         
+
                 Summa.Text = getSumma(tours).ToString("F3") + " РУБ";
-            
+
             }
             catch
             {
@@ -127,7 +129,7 @@ namespace TourGerasimov.Pages
 
 
         }
-      
+
         private void cbFiltres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filtres();
